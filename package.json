@@ -1,0 +1,23 @@
+{
+  "name": "@socialgorithm/tic-tac-toe-starter",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Starter player for Tic Tac Toe games",
+  "main": "player.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/socialgorithm/tic-tac-toe-starter.git"
+  },
+  "author": "Socialgorithm",
+  "license": "AGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/socialgorithm/tic-tac-toe-starter/issues"
+  },
+  "homepage": "https://github.com/socialgorithm/tic-tac-toe-starter#readme",
+  "dependencies": {
+    "@socialgorithm/ultimate-ttt": "^4.19.0"
+  }
+}
