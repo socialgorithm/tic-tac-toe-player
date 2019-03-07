@@ -1,14 +1,19 @@
 const readline = require('readline');
-const GameLogic = require('./players/random.js');
 
-function input() {
+function main() {
+  const playerImplementation = process.argv[2] ? process.argv[2] : 'random';
+  runPlayer(playerImplementation);
+}
+
+function runPlayer(playerImplementation) {
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
   });
 
   // Load player's code
-  let player = new GameLogic(1);
+  const PlayerImplementation = require(`./players/${playerImplementation}.js`);
+  let player = new PlayerImplementation(1);
 
   rl.on('line', function (input) {
     const parts = input.split(' ');
@@ -55,14 +60,10 @@ function writeMove(coords) {
   write(move);
 }
 
-function player() {
-  input();
-}
-
 function write(output) {
   if (output) {
     console.log(output);
   }
 }
 
-player();
+main();
