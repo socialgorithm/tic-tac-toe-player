@@ -16,6 +16,8 @@ function input() {
 
     let next, coords;
 
+    console.log('RECEIVED MESSAGE', input);
+
     switch (action) {
       case 'init':
         player.init();
@@ -23,7 +25,7 @@ function input() {
       case 'move':
         try {
           coords = player.getMove();
-          player.addMove(coords.board, coords.move);
+          // player.addMove(coords.board, coords.move);
           writeMove(coords);
         } catch (e) {
           console.error('Player Error: Failed to get a move', e);
@@ -32,11 +34,7 @@ function input() {
       case 'opponent':
         // the move will be in the format row,col format
         const moveCoords = parts[1].split(',').map((coord) => parseInt(coord, 10));
-        player.addOpponentMove(
-          [
-            boardCoords[0],
-            boardCoords[1]
-          ],
+        player.onOpponentMove(
           [
             moveCoords[0],
             moveCoords[1]
@@ -44,7 +42,6 @@ function input() {
         );
         if (!player.game.isFinished()) {
           coords = player.getMove();
-          player.addMove(coords.board, coords.move);
           writeMove(coords);
         }
         break;
@@ -53,7 +50,8 @@ function input() {
 }
 
 function writeMove(coords) {
-  const move = coords.board[0] + ',' + coords.board[1];
+  console.log('write move', coords);
+  const move = coords[0] + ',' + coords[1];
   write(move);
 }
 

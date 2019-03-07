@@ -18,28 +18,24 @@ class GameLogic {
     this.game = new SubBoard(this.size);
   }
 
-  onFirstMoveRequest() {
-    const myMove = getRandomValidMove();
+  getMove() {
+    const myMove = this.getRandomValidMove();
     this.game = this.game.addMyMove(myMove);
 
     return myMove;
   }
 
   onOpponentMove(opponentMove) {
-    this.game = this.game.addOpponentMove(opponentMove);
-
-    const myMove = getRandomValidMove();
-    this.game = this.game.addMyMove(myMove);
-
-    return myMove;
+    try {
+      this.game = this.game.addOpponentMove(opponentMove);
+    } catch (e) {
+      console.log('error adding opponent move', e);
+      console.log(this.game.prettyPrint());
+    }
   }
 
   getRandomValidMove() {
-    const move = this.findRandomPosition();
-
-    return {
-      move: move
-    };
+    return this.findRandomPosition();
   }
 
   /**
@@ -47,12 +43,12 @@ class GameLogic {
    * @returns {[number,number]} Position coordinates [row, col]
    */
   findRandomPosition() {
-    if (game.isFull() || game.isFinished()) {
+    if (this.game.isFull() || this.game.isFinished()) {
       console.error('This board is full/finished', board);
       console.error(game.prettyPrint());
       return;
     }
-    const validMoves = game.getValidMoves();
+    const validMoves = this.game.getValidMoves();
     if (validMoves.length === 0) {
       // this case should never happen :)
       throw new Error('Error: There are no moves available on this board');
