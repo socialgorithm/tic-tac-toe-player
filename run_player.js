@@ -62,7 +62,7 @@ function writeMove(coords) {
 
 function write(output) {
   if (output) {
-    console.log(output);
+    console.log("send:", output);
   }
 }
 
