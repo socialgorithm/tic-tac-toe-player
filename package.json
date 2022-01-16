@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/socialgorithm/tic-tac-toe-player#readme",
   "dependencies": {
-    "@socialgorithm/ultimate-ttt": "^4.19.0"
+    "@socialgorithm/ultimate-ttt": "^10.2.1"
   }
 }
